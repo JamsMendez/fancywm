@@ -167,6 +167,14 @@ namespace FancyWM.ViewModels
         {
             if (Node is WindowNode node)
             {
+                if (Overlay?.ShowWindowActionsBar == false)
+                {
+                    RevealHighlightOpacity = 0;
+                    ActionsVisibility = Visibility.Collapsed;
+                    m_actionsRevealState = RevealState.Hidden;
+                    return;
+                }
+
                 if (m_isActionActive)
                 {
                     RevealHighlightOpacity = 0;

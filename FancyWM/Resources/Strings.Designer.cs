@@ -680,7 +680,43 @@ namespace FancyWM.Resources {
                 return ResourceManager.GetString("Interface.ShowFocusDuringAction.Description", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Show the window actions bar.
+        /// </summary>
+        public static string Interface_ShowWindowActionsBar {
+            get {
+                return ResourceManager.GetString("Interface.ShowWindowActionsBar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the split/stack/float action bar when hovering over the top edge of the focused window..
+        /// </summary>
+        public static string Interface_ShowWindowActionsBar_Description {
+            get {
+                return ResourceManager.GetString("Interface.ShowWindowActionsBar.Description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Show the panel group bar.
+        /// </summary>
+        public static string Interface_ShowPanelBar {
+            get {
+                return ResourceManager.GetString("Interface.ShowPanelBar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the group bar above split and stack panels, including the per-window tabs with each application&apos;s name..
+        /// </summary>
+        public static string Interface_ShowPanelBar_Description {
+            get {
+                return ResourceManager.GetString("Interface.ShowPanelBar.Description", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Sizes &amp; margins.
         /// </summary>

@@ -18,6 +18,7 @@ namespace FancyWM.Models
         bool AutoCollapsePanels { get; }
         bool DelayReposition { get; }
         bool AutoFloatNewWindows { get; }
+        bool ShowPanelBar { get; }
     }
 
     [AttributeUsage(AttributeTargets.Field)]
@@ -66,6 +67,10 @@ namespace FancyWM.Models
         public bool ShowFocus { get; init; } = false;
 
         public bool ShowFocusDuringAction { get; init; } = true;
+
+        public bool ShowWindowActionsBar { get; init; } = true;
+
+        public bool ShowPanelBar { get; init; } = true;
 
         public bool OverrideAccentColor { get; init; } = false;
 

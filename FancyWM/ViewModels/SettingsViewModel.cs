@@ -174,6 +174,10 @@ namespace FancyWM.ViewModels
 
         public bool ShowFocusDuringAction { get => m_showFocusDuringAction; set => SetField(ref m_showFocusDuringAction, value); }
 
+        public bool ShowWindowActionsBar { get => m_showWindowActionsBar; set => SetField(ref m_showWindowActionsBar, value); }
+
+        public bool ShowPanelBar { get => m_showPanelBar; set => SetField(ref m_showPanelBar, value); }
+
         public ObservableCollection<KeybindingViewModel>? Keybindings
         {
             get => m_keybindings; set
@@ -223,6 +227,8 @@ namespace FancyWM.ViewModels
         private bool m_soundOnFailure;
         private bool m_showFocus;
         private bool m_showFocusDuringAction;
+        private bool m_showWindowActionsBar;
+        private bool m_showPanelBar;
         private readonly ILogger m_logger = App.Current.Logger;
 
         public SettingsViewModel(IObservableFileEntity<Settings> observable)
@@ -260,6 +266,8 @@ namespace FancyWM.ViewModels
                     SoundOnFailure = settings.SoundOnFailure;
                     ShowFocus = settings.ShowFocus;
                     ShowFocusDuringAction = settings.ShowFocusDuringAction;
+                    ShowWindowActionsBar = settings.ShowWindowActionsBar;
+                    ShowPanelBar = settings.ShowPanelBar;
 
                     var newKeybindings = KeybindingViewModel.FromDictionary(settings.Keybindings);
                     if (m_keybindings == null)
@@ -385,7 +393,9 @@ namespace FancyWM.ViewModels
                     MultiMonitorSupport = MultiMonitorSupport,
                     SoundOnFailure = SoundOnFailure,
                     ShowFocus = ShowFocus,
-                    ShowFocusDuringAction = ShowFocusDuringAction
+                    ShowFocusDuringAction = ShowFocusDuringAction,
+                    ShowWindowActionsBar = ShowWindowActionsBar,
+                    ShowPanelBar = ShowPanelBar
                 };
             });
         }

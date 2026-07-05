@@ -1733,7 +1733,8 @@ namespace FancyWM
         private Rectangle GetPanelPaddingRect()
         {
             double scaling = m_display.Scaling;
-            return new Rectangle(0, (int)((m_panelHeight + m_windowPadding) * scaling), 0, 0);
+            var topPadding = m_showPanelBar ? m_panelHeight + m_windowPadding : m_windowPadding;
+            return new Rectangle(0, (int)(topPadding * scaling), 0, 0);
         }
 
         private static System.Windows.Thickness ToThickness(Rectangle rc)

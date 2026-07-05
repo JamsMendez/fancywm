@@ -100,6 +100,8 @@ namespace FancyWM
         private double m_panelHeight = 22.0;
         private double m_windowPadding = 4.0;
         private int m_panelFontSize = 12;
+        private bool m_showWindowActionsBar = true;
+        private bool m_showPanelBar = true;
         private IReadOnlyCollection<TilingNode> m_previousSnapshot = [];
         private readonly Dictionary<TilingNode, TilingNodeViewModel> m_nodeViewModels = [];
         private IReadOnlySet<IWindow> m_previewWindows = new HashSet<IWindow>();
@@ -126,6 +128,8 @@ namespace FancyWM
                     m_panelHeight = settings.PanelHeight;
                     m_windowPadding = settings.WindowPadding;
                     m_panelFontSize = settings.PanelFontSize;
+                    m_showWindowActionsBar = settings.ShowWindowActionsBar;
+                    m_showPanelBar = settings.ShowPanelBar;
                     UpdateResources();
                 }));
         }
@@ -172,6 +176,7 @@ namespace FancyWM
             m_viewModel.FontSize = m_display.Scaling * m_panelFontSize;
             m_viewModel.IconSize = m_display.Scaling * m_panelFontSize;
             m_viewModel.TabWidth = 175 * m_display.Scaling * m_panelFontSize / 12;
+            m_viewModel.ShowWindowActionsBar = m_showWindowActionsBar;
         }
 
         private Rectangle AdjustForDisplay(Rectangle rectangle)
@@ -398,7 +403,7 @@ namespace FancyWM
                 (int)(vm.ComputedBounds.Width - PanelSpacing),
                 (int)(PanelPadding.Top - PanelSpacing));
 
-            vm.IsHeaderVisible = !IsObscured(node, focusedPath);
+            vm.IsHeaderVisible = m_showPanelBar && !IsObscured(node, focusedPath);
 
             if (HaveChildrenChanged(vm, node))
             {

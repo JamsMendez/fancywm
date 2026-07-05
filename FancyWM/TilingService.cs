@@ -83,6 +83,12 @@ namespace FancyWM
             PropagatePanelHeightChange();
         }
 
+        private void SetShowPanelBar(bool value)
+        {
+            m_showPanelBar = value;
+            PropagatePanelHeightChange();
+        }
+
         private void SetShowFocus(bool value)
         {
             m_showFocus = value;
@@ -173,6 +179,7 @@ namespace FancyWM
         private readonly CompositeDisposable m_subscriptions = [];
         private readonly IAnimationThread m_animationThread;
         private int m_panelHeight = 20;
+        private bool m_showPanelBar = true;
         private int m_windowPadding = 2;
         private bool m_showFocus = false;
         private bool m_showPreviewFocus = false;
@@ -265,6 +272,7 @@ namespace FancyWM
                 m_autoFloatNewWindows = x.AutoFloatNewWindows;
                 SetWindowPadding(x.WindowPadding);
                 SetPanelHeight(x.PanelHeight);
+                SetShowPanelBar(x.ShowPanelBar);
                 SetShowFocus(x.ShowFocus);
                 SetAutoCollapse(x.AutoCollapsePanels);
             });

@@ -10,10 +10,17 @@
   <ItemGroup>
     <PackageReference Include="AngleSharp.Css" Version="0.17.0" />
     <PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.8.0" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <IgnoresAccessChecksTo Include="AngleSharp.Css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.10.85" />
   </ItemGroup>
 
 </Project>

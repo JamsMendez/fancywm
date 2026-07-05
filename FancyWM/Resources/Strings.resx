@@ -423,6 +423,18 @@
   <data name="Interface.ShowFocusDuringAction.Description" xml:space="preserve">
     <value>Highlights the focused window when the command pop-up is shown.</value>
   </data>
+  <data name="Interface.ShowWindowActionsBar" xml:space="preserve">
+    <value>Show the window actions bar</value>
+  </data>
+  <data name="Interface.ShowWindowActionsBar.Description" xml:space="preserve">
+    <value>Shows the split/stack/float action bar when hovering over the top edge of the focused window.</value>
+  </data>
+  <data name="Interface.ShowPanelBar" xml:space="preserve">
+    <value>Show the panel group bar</value>
+  </data>
+  <data name="Interface.ShowPanelBar.Description" xml:space="preserve">
+    <value>Shows the group bar above split and stack panels, including the per-window tabs with each application's name.</value>
+  </data>
   <data name="General.ShowStartupWindow" xml:space="preserve">
     <value>Show the startup window at program startup</value>
   </data>

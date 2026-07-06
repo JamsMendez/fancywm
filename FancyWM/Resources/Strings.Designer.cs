@@ -608,7 +608,16 @@ namespace FancyWM.Resources {
                 return ResourceManager.GetString("Interface.OverrideAccentColor", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Custom accent color.
+        /// </summary>
+        public static string Interface_CustomAccentColor {
+            get {
+                return ResourceManager.GetString("Interface.CustomAccentColor", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Panel font size.
         /// </summary>

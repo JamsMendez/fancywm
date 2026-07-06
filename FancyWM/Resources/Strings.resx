@@ -387,6 +387,9 @@
   <data name="Interface.OverrideAccentColor" xml:space="preserve">
     <value>Override accent color</value>
   </data>
+  <data name="Interface.CustomAccentColor" xml:space="preserve">
+    <value>Custom accent color</value>
+  </data>
   <data name="Interface.PanelFontSize" xml:space="preserve">
     <value>Panel font size</value>
   </data>

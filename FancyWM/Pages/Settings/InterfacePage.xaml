@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:viewmodels="clr-namespace:FancyWM.ViewModels"
+    xmlns:controls="clr-namespace:FancyWM.Controls"
     xmlns:res="clr-namespace:FancyWM.Resources"
     d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
     mc:Ignorable="d"
@@ -165,25 +166,26 @@
             </Border>
 
             <Border Style="{DynamicResource SettingsItemStyle}" CornerRadius="{DynamicResource ControlCornerRadiusBottom}">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                        <TextBlock VerticalAlignment="Center" Text="R" Margin="0, 0, 10, 0" />
-                        <TextBox Text="{Binding Path=CustomAccentColorR, Mode=TwoWay}" Width="96" Margin="0, 0, 10, 0" />
-                        <TextBlock VerticalAlignment="Center" Text="G" Margin="0, 0, 10, 0" />
-                        <TextBox Text="{Binding Path=CustomAccentColorG, Mode=TwoWay}" Width="96" Margin="0, 0, 10, 0" />
-                        <TextBlock VerticalAlignment="Center" Text="B" Margin="0, 0, 10, 0" />
-                        <TextBox Text="{Binding Path=CustomAccentColorB, Mode=TwoWay}" Width="96" Margin="0, 0, 10, 0" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="A" Margin="0, 0, 10, 0" />
-                        <TextBox Text="{Binding Path=CustomAccentColorA, Mode=TwoWay}" Width="96" Margin="0, 0, 10, 0" />
-                        <Border Width="32" Height="32" BorderBrush="{DynamicResource SystemControlBackgroundBaseHighBrush}" BorderThickness="1">
-                            <Border.Background>
-                                <SolidColorBrush Color="{Binding Path=CustomAccentColor}" />
-                            </Border.Background>
+                <DockPanel LastChildFill="False">
+                    <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text="{x:Static res:Strings.Interface_CustomAccentColor}" Margin="0,0,16,0" />
+                    <Button DockPanel.Dock="Right" Padding="0" BorderThickness="0" Background="Transparent">
+                        <ui:FlyoutService.Flyout>
+                            <ui:Flyout Placement="Bottom">
+                                <controls:ColorPicker Color="{Binding Path=CustomAccentColor, Mode=TwoWay}" />
+                            </ui:Flyout>
+                        </ui:FlyoutService.Flyout>
+                        <Border Width="48" Height="32" BorderBrush="{DynamicResource SystemControlBackgroundBaseHighBrush}" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="{StaticResource CheckerboardBrush}" />
+                                <Rectangle>
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{Binding Path=CustomAccentColor}" />
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
                         </Border>
-                    </StackPanel>
-                </StackPanel>
+                    </Button>
+                </DockPanel>
             </Border>
         </ui:SimpleStackPanel>
     </Grid>

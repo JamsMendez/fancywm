@@ -10,6 +10,26 @@
                 <ui:ThemeResources CanBeAccessedAcrossThreads="True" />
                 <ui:XamlControlsResources />
             </ResourceDictionary.MergedDictionaries>
+
+            <DrawingBrush x:Key="CheckerboardBrush" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,16,16">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="#FFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,16,16" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFCCCCCC">
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup>
+                                    <RectangleGeometry Rect="0,0,8,8" />
+                                    <RectangleGeometry Rect="8,8,8,8" />
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

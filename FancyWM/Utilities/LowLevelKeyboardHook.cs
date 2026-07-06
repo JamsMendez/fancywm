@@ -23,6 +23,7 @@ namespace FancyWM.Utilities
         private static readonly TimeSpan RehookIdleInterval = TimeSpan.FromSeconds(5);
 
         private const uint LLKHF_UP = 0x80;
+        private const uint LLKHF_EXTENDED = 0x01;
 
         private readonly HOOKPROC m_hookProcDelegate;
         private readonly Thread m_hookThread;
@@ -101,6 +102,18 @@ namespace FancyWM.Utilities
                 var kbhs = Marshal.PtrToStructure<KBDLLHOOKSTRUCT>(lParam);
                 KeyCode keyCode = (KeyCode)kbhs.vkCode;
                 bool isPressed = (kbhs.flags & LLKHF_UP) == 0;
+
+                // Windows synthesizes a fake LeftCtrl key event right before/after RightAlt (AltGr) is
+                // pressed/released, for backwards compatibility with apps that don't understand AltGr.
+                // The synthetic event is distinguishable from a real LeftCtrl press because it carries
+                // the "extended" flag, which a genuine LeftCtrl key press never has. Drop it here so it
+                // never reaches hotkey listeners, otherwise it looks like an unrelated key was pressed
+                // and clears any modifiers already held (breaking Win+RightAlt-style combos).
+                if (keyCode == KeyCode.LeftCtrl && (kbhs.flags & LLKHF_EXTENDED) != 0)
+                {
+                    return PInvoke.CallNextHookEx(new HHOOK(), code, wParam, lParam);
+                }
+
                 var e = new KeyStateChangedEventArgs(keyCode, isPressed);
                 KeyStateChanged?.Invoke(this, ref e);
 

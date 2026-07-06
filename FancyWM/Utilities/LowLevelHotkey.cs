@@ -78,7 +78,7 @@ namespace FancyWM.Utilities
                     e.Handled = true;
                 }
 
-                int modifierIndex = Array.IndexOf(m_modifiers, e.KeyCode);
+                int modifierIndex = Array.IndexOf(m_modifiers, inputKeyCode);
                 if (modifierIndex != -1)
                 {
                     m_pressedModifiers[modifierIndex] = true;
@@ -92,7 +92,7 @@ namespace FancyWM.Utilities
             }
             else
             {
-                int modifierIndex = Array.IndexOf(m_modifiers, e.KeyCode);
+                int modifierIndex = Array.IndexOf(m_modifiers, inputKeyCode);
                 if (modifierIndex != -1)
                 {
                     m_pressedModifiers[modifierIndex] = false;

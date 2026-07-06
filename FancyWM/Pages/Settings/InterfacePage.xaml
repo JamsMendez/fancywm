@@ -168,12 +168,7 @@
             <Border Style="{DynamicResource SettingsItemStyle}" CornerRadius="{DynamicResource ControlCornerRadiusBottom}">
                 <DockPanel LastChildFill="False">
                     <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text="{x:Static res:Strings.Interface_CustomAccentColor}" Margin="0,0,16,0" />
-                    <Button DockPanel.Dock="Right" Padding="0" BorderThickness="0" Background="Transparent">
-                        <ui:FlyoutService.Flyout>
-                            <ui:Flyout Placement="Bottom">
-                                <controls:ColorPicker Color="{Binding Path=CustomAccentColor, Mode=TwoWay}" />
-                            </ui:Flyout>
-                        </ui:FlyoutService.Flyout>
+                    <ToggleButton x:Name="ColorSwatchToggle" DockPanel.Dock="Right" Padding="0" BorderThickness="0" Background="Transparent">
                         <Border Width="48" Height="32" BorderBrush="{DynamicResource SystemControlBackgroundBaseHighBrush}" BorderThickness="1">
                             <Grid>
                                 <Rectangle Fill="{StaticResource CheckerboardBrush}" />
@@ -184,7 +179,25 @@
                                 </Rectangle>
                             </Grid>
                         </Border>
-                    </Button>
+                    </ToggleButton>
+                    <Popup DockPanel.Dock="Right"
+                           PlacementTarget="{Binding ElementName=ColorSwatchToggle}"
+                           IsOpen="{Binding IsChecked, ElementName=ColorSwatchToggle, Mode=TwoWay}"
+                           Placement="Bottom"
+                           StaysOpen="False"
+                           AllowsTransparency="True"
+                           PopupAnimation="Fade">
+                        <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+                                BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                                BorderThickness="1"
+                                CornerRadius="{DynamicResource ControlCornerRadius}"
+                                Margin="8">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="16" ShadowDepth="2" Opacity="0.3" />
+                            </Border.Effect>
+                            <controls:ColorPicker Color="{Binding Path=CustomAccentColor, Mode=TwoWay}" />
+                        </Border>
+                    </Popup>
                 </DockPanel>
             </Border>
         </ui:SimpleStackPanel>

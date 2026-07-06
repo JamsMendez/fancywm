@@ -84,6 +84,7 @@ namespace FancyWM
         private readonly ModifierWindowMover m_mvm;
         private long m_cmdSequenceId = 0;
         private bool m_showFocusDuringAction;
+        private bool m_showActivationToast;
         private bool m_notifyVirtualDesktopServiceIncompatibility;
         private LowLevelHotkey[] m_directHks = [];
         private DispatcherTimer m_dispatcherTimer;
@@ -124,6 +125,7 @@ namespace FancyWM
                 .Do(x => m_soundOnFailure = x.SoundOnFailure)
                 .Do(x => m_checkForUpdates = x.CheckForUpdates)
                 .Do(x => m_showFocusDuringAction = x.ShowFocusDuringAction)
+                .Do(x => m_showActivationToast = x.ShowActivationToast)
                 .Do(x => m_notifyVirtualDesktopServiceIncompatibility = x.NotifyVirtualDesktopServiceIncompatibility)
                 .Do(x =>
                 {
@@ -1077,6 +1079,16 @@ namespace FancyWM
 
         private async Task ShowWaitingForActionToast(bool showContextHints, CancellationToken cancellationToken)
         {
+            if (!m_showActivationToast)
+            {
+                // Keep waiting until the command sequence ends or times out, same as when the
+                // pop-up is shown, just without displaying anything.
+                var tcs = new TaskCompletionSource();
+                using var registration = cancellationToken.Register(() => tcs.TrySetResult());
+                await tcs.Task;
+                return;
+            }
+
             var container = new StackPanel
             {
                 Orientation = Orientation.Vertical,

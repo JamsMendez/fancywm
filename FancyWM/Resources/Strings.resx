@@ -423,6 +423,12 @@
   <data name="Interface.ShowFocusDuringAction.Description" xml:space="preserve">
     <value>Highlights the focused window when the command pop-up is shown.</value>
   </data>
+  <data name="Interface.ShowActivationToast" xml:space="preserve">
+    <value>Show the "Waiting for action" pop-up</value>
+  </data>
+  <data name="Interface.ShowActivationToast.Description" xml:space="preserve">
+    <value>Shows a pop-up with a hint to press F12 for help while FancyWM is waiting for a command key.</value>
+  </data>
   <data name="Interface.ShowWindowActionsBar" xml:space="preserve">
     <value>Show the window actions bar</value>
   </data>

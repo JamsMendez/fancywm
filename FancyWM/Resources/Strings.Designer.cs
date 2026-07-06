@@ -682,6 +682,24 @@ namespace FancyWM.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Show the "Waiting for action" pop-up.
+        /// </summary>
+        public static string Interface_ShowActivationToast {
+            get {
+                return ResourceManager.GetString("Interface.ShowActivationToast", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Shows a pop-up with a hint to press F12 for help while FancyWM is waiting for a command key..
+        /// </summary>
+        public static string Interface_ShowActivationToast_Description {
+            get {
+                return ResourceManager.GetString("Interface.ShowActivationToast.Description", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Show the window actions bar.
         /// </summary>
         public static string Interface_ShowWindowActionsBar {

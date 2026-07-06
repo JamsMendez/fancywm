@@ -68,6 +68,8 @@ namespace FancyWM.Models
 
         public bool ShowFocusDuringAction { get; init; } = true;
 
+        public bool ShowActivationToast { get; init; } = true;
+
         public bool ShowWindowActionsBar { get; init; } = true;
 
         public bool ShowPanelBar { get; init; } = true;

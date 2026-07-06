@@ -174,6 +174,8 @@ namespace FancyWM.ViewModels
 
         public bool ShowFocusDuringAction { get => m_showFocusDuringAction; set => SetField(ref m_showFocusDuringAction, value); }
 
+        public bool ShowActivationToast { get => m_showActivationToast; set => SetField(ref m_showActivationToast, value); }
+
         public bool ShowWindowActionsBar { get => m_showWindowActionsBar; set => SetField(ref m_showWindowActionsBar, value); }
 
         public bool ShowPanelBar { get => m_showPanelBar; set => SetField(ref m_showPanelBar, value); }
@@ -227,6 +229,7 @@ namespace FancyWM.ViewModels
         private bool m_soundOnFailure;
         private bool m_showFocus;
         private bool m_showFocusDuringAction;
+        private bool m_showActivationToast;
         private bool m_showWindowActionsBar;
         private bool m_showPanelBar;
         private readonly ILogger m_logger = App.Current.Logger;
@@ -266,6 +269,7 @@ namespace FancyWM.ViewModels
                     SoundOnFailure = settings.SoundOnFailure;
                     ShowFocus = settings.ShowFocus;
                     ShowFocusDuringAction = settings.ShowFocusDuringAction;
+                    ShowActivationToast = settings.ShowActivationToast;
                     ShowWindowActionsBar = settings.ShowWindowActionsBar;
                     ShowPanelBar = settings.ShowPanelBar;
 
@@ -394,6 +398,7 @@ namespace FancyWM.ViewModels
                     SoundOnFailure = SoundOnFailure,
                     ShowFocus = ShowFocus,
                     ShowFocusDuringAction = ShowFocusDuringAction,
+                    ShowActivationToast = ShowActivationToast,
                     ShowWindowActionsBar = ShowWindowActionsBar,
                     ShowPanelBar = ShowPanelBar
                 };

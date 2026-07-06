@@ -60,6 +60,18 @@
             <Border Style="{DynamicResource SettingsItemStyle}">
                 <StackPanel>
                     <DockPanel LastChildFill="True">
+                        <CheckBox DockPanel.Dock="Right" IsChecked="{Binding Path=ShowActivationToast, Mode=TwoWay}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static res:Strings.Interface_ShowActivationToast}" Margin="0,0,16,0" />
+                    </DockPanel>
+                    <TextBlock TextWrapping="WrapWithOverflow" Padding="0,16,0,0" VerticalAlignment="Center" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}">
+                    <Run Text="{x:Static res:Strings.Interface_ShowActivationToast_Description}" />
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{DynamicResource SettingsItemStyle}">
+                <StackPanel>
+                    <DockPanel LastChildFill="True">
                         <CheckBox DockPanel.Dock="Right" IsChecked="{Binding Path=ShowWindowActionsBar, Mode=TwoWay}" />
                         <TextBlock VerticalAlignment="Center" Text="{x:Static res:Strings.Interface_ShowWindowActionsBar}" Margin="0,0,16,0" />
                     </DockPanel>

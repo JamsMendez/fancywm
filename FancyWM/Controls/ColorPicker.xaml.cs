@@ -66,14 +66,18 @@ namespace FancyWM.Controls
             UpdateVisuals();
         }
 
+        private bool IsDragging => SvArea.IsMouseCaptured || HueTrack.IsMouseCaptured || AlphaTrack.IsMouseCaptured;
+
         private void UpdateVisuals()
         {
-            SvHueRect.Fill = new SolidColorBrush(ColorExtensions.FromHsv(m_hue, 1, 1));
+            SvHueBrush.Color = ColorExtensions.FromHsv(m_hue, 1, 1);
             AlphaStopTransparent.Color = ColorExtensions.FromHsv(m_hue, m_saturation, m_value, 0);
             AlphaStopOpaque.Color = ColorExtensions.FromHsv(m_hue, m_saturation, m_value, 255);
             PreviewBrush.Color = Color;
 
-            if (!HexTextBox.IsKeyboardFocused)
+            // Updating the TextBox's Text is comparatively expensive (undo stack, layout, TextChanged),
+            // so skip it while dragging and only refresh once the drag ends.
+            if (!HexTextBox.IsKeyboardFocused && !IsDragging)
             {
                 HexTextBox.Text = Color.ToString();
             }
@@ -118,7 +122,11 @@ namespace FancyWM.Controls
             }
         }
 
-        private void OnSvMouseUp(object sender, MouseButtonEventArgs e) => SvArea.ReleaseMouseCapture();
+        private void OnSvMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            SvArea.ReleaseMouseCapture();
+            UpdateVisuals();
+        }
 
         private void UpdateSvFromPoint(Point point)
         {
@@ -146,7 +154,11 @@ namespace FancyWM.Controls
             }
         }
 
-        private void OnHueMouseUp(object sender, MouseButtonEventArgs e) => HueTrack.ReleaseMouseCapture();
+        private void OnHueMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            HueTrack.ReleaseMouseCapture();
+            UpdateVisuals();
+        }
 
         private void UpdateHueFromPoint(Point point)
         {
@@ -173,7 +185,11 @@ namespace FancyWM.Controls
             }
         }
 
-        private void OnAlphaMouseUp(object sender, MouseButtonEventArgs e) => AlphaTrack.ReleaseMouseCapture();
+        private void OnAlphaMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            AlphaTrack.ReleaseMouseCapture();
+            UpdateVisuals();
+        }
 
         private void UpdateAlphaFromPoint(Point point)
         {

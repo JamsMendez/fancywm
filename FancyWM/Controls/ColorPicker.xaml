@@ -9,7 +9,11 @@
     <StackPanel Orientation="Vertical" Width="240" Margin="12">
         <Grid x:Name="SvArea" Height="160" Margin="0,0,0,12"
               MouseDown="OnSvMouseDown" MouseMove="OnSvMouseMove" MouseUp="OnSvMouseUp">
-            <Rectangle x:Name="SvHueRect" RadiusX="4" RadiusY="4" />
+            <Rectangle RadiusX="4" RadiusY="4">
+                <Rectangle.Fill>
+                    <SolidColorBrush x:Name="SvHueBrush" />
+                </Rectangle.Fill>
+            </Rectangle>
             <Rectangle RadiusX="4" RadiusY="4">
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
